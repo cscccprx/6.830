@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-03-10T19:06:26</date>
+  <millis>1646910386066</millis>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>simpledb.storage.BufferPool</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>init buffer pool</message>
+</record>
+<record>
+  <date>2022-03-10T19:06:26</date>
+  <millis>1646910386077</millis>
+  <sequence>1</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>simpledb.storage.BufferPool</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>init buffer pool</message>
+</record>
+<record>
+  <date>2022-03-10T19:06:26</date>
+  <millis>1646910386082</millis>
+  <sequence>2</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>simpledb.storage.BufferPool</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>init buffer pool</message>
+</record>
+<record>
+  <date>2022-03-10T19:06:26</date>
+  <millis>1646910386084</millis>
+  <sequence>3</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>simpledb.storage.BufferPool</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>init buffer pool</message>
+</record>
+</log>

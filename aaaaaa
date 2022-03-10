@@ -1,0 +1,16 @@
+   35  less aaa.txt
+   36  less 8888g.log| grep 'message' > aaa.txt
+   37  less aaa.txt
+   38  less aaa.txt
+   39  less 8888g.log| grep 'message' > aaa.txt
+   40  less aaa.txt
+   41  less 8888g.log| grep 'message' > aaa.txt
+   42  less aaa.txt
+   43  less 8888g.log| grep 'message' > aaa.txt
+   44  less aaa.txt
+   45  less 8888g.log| grep 'message' > aaa.txt
+   46  less aaa.txt
+   47  ll
+   48  ls
+   49  history
+   50  history

@@ -1,0 +1,104 @@
+package simpledb.execution;
+
+import simpledb.transaction.TransactionAbortedException;
+import simpledb.common.DbException;
+import simpledb.storage.Tuple;
+import simpledb.storage.TupleDesc;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+/**
+ * Filter is an operator that implements a relational select.
+ */
+public class Filter extends Operator {
+
+    private static final long serialVersionUID = 1L;
+    private Predicate predicate;
+    private OpIterator child;
+    private TupleDesc tupleDesc;
+    private Iterator<Tuple> it ;
+    private List<Tuple> tupleList;
+
+    /**
+     * Constructor accepts a predicate to apply and a child operator to read
+     * tuples to filter from.
+     * 
+     * @param p
+     *            The predicate to filter tuples with
+     * @param child
+     *            The child operator
+     */
+    public Filter(Predicate p, OpIterator child) {
+        // some code goes here
+        this.predicate = p;
+        this.child = child;
+        this.tupleDesc = child.getTupleDesc();
+    }
+
+    public Predicate getPredicate() {
+        // some code goes here
+        return this.predicate;
+    }
+
+    public TupleDesc getTupleDesc() {
+        // some code goes here
+        return this.tupleDesc;
+    }
+
+    public void open() throws DbException, NoSuchElementException,
+            TransactionAbortedException {
+        // some code goes here
+        child.open();
+        ArrayList<Tuple> tuples = new ArrayList<>();
+        while (child.hasNext()) {
+            tuples.add(child.next());
+        }
+        tupleList = tuples.stream().filter(s -> predicate.filter(s)).collect(Collectors.toList());
+        it = tupleList.iterator();
+        super.open();
+    }
+
+    public void close() {
+        // some code goes here
+        it = null;
+        child.close();
+        super.close();
+    }
+
+    public void rewind() throws DbException, TransactionAbortedException {
+        // some code goes here
+        it = tupleList.iterator();
+    }
+
+    /**
+     * AbstractDbIterator.readNext implementation. Iterates over tuples from the
+     * child operator, applying the predicate to them and returning those that
+     * pass the predicate (i.e. for which the Predicate.filter() returns true.)
+     * 
+     * @return The next tuple that passes the filter, or null if there are no
+     *         more tuples
+     * @see Predicate#filter
+     */
+    protected Tuple fetchNext() throws NoSuchElementException,
+            TransactionAbortedException, DbException {
+        // some code goes here
+        if (it != null && it.hasNext()) {
+            return it.next();
+        }
+        return null;
+    }
+
+    @Override
+    public OpIterator[] getChildren() {
+        // some code goes here
+        return new OpIterator[]{this.child};
+    }
+
+    @Override
+    public void setChildren(OpIterator[] children) {
+        // some code goes here
+        this.child = children[0];
+    }
+
+}
